@@ -116,6 +116,16 @@ class LinkedList():
             mainptr=mainptr.next
             refptr=refptr.next
         return mainptr
+    def remove_duplicates(self):
+        current = self.head
+        while current:
+            runner = current
+            while runner.next:
+                if runner.next.value== current.value:
+                    runner.next = runner.next.next
+                else:
+                    runner = runner.next
+            current = current.next
             
         
             
@@ -130,6 +140,7 @@ linkedlist.insert_node(2,0)
 linkedlist.insert_node(4,2)
 linkedlist.insert_node(5,3)
 linkedlist.insert_node(7,2)
+linkedlist.insert_node(7,5)
 # linkedlist.delete_node(3)
 linkedlist.search(5)
 linkedlist.display()
@@ -146,8 +157,11 @@ if middle_value is not None:
     print(f"The nth  node from back value is: {n_node_from_back.value}")
 else:
     print("The list is empty.")
+linkedlist.remove_duplicates()
+linkedlist.display()
+
            
-            
+# for more problems see in handwritten notes 
             
             
     
