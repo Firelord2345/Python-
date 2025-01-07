@@ -1,7 +1,6 @@
-stack = []
-
 def evaluate_prefix(expression):
-    # Split the expression by spaces
+    stack = []  # Move the stack inside the function
+    # Split the expression by spaces and reverse the order of tokens
     tokens = expression.split()[::-1]
 
     for i in tokens:
@@ -25,10 +24,13 @@ def evaluate_prefix(expression):
         elif i == "/":
             op2 = stack.pop()
             op1 = stack.pop()
+            if op2 == 0:
+                raise ValueError("Cannot divide by zero")
             result = op1 / op2
             stack.append(result)
     
     return stack[0]  # Return the final result after all operations
+
 expression = "* + 2 3 4"
 result = evaluate_prefix(expression)
 print("Result:", result)
